@@ -1,17 +1,5 @@
 <?php
-/**
- *-------------------------------------------------------------------------p*
- *
- *-------------------------------------------------------------------------h*
- * @copyright  Copyright (c) 2015-2022 Jody Inc. (http://www.Jody.com)
- *-------------------------------------------------------------------------c*
- * @license    http://www.Jody.com        s h o p w w i . c o m
- *-------------------------------------------------------------------------e*
- * @link       http://www.Jody.com by 象讯科技 phcent.com
- *-------------------------------------------------------------------------n*
- * @since      Jody象讯·PHP商城系统Pro
- *-------------------------------------------------------------------------t*
- */
+
 
 
 namespace Jody\WebmanAuth;
@@ -47,7 +35,7 @@ class JWT
      */
     public function __construct()
     {
-        $_config = config('plugin.Jody.auth.app.jwt');
+        $_config = config('plugin.jody.auth.app.jwt');
         if (empty($_config)) {
             throw new JwtTokenException('The configuration file is abnormal or does not exist');
         }
@@ -89,7 +77,7 @@ class JWT
         $refreshToken = self::makeToken($payload['refreshPayload'], $refreshSecretKey, $this->config['algorithms']);
 
         //获取主键
-        $idKey = config("plugin.Jody.auth.app.guard.{$this->guard}.key");
+        $idKey = config("plugin.jody.auth.app.guard.{$this->guard}.key");
          //redis 开启
         if($this->redis){
             $this->setRedis($extend[$idKey],$accessToken,$refreshToken,$exp,$refreshExp);
@@ -190,7 +178,7 @@ class JWT
             //redis 开启
             if($this->redis){
                 //获取主键
-                $idKey = config("plugin.Jody.auth.app.guard.{$this->guard}.key");
+                $idKey = config("plugin.jody.auth.app.guard.{$this->guard}.key");
                 $this->checkRedis($tokenPayload->extend->$idKey,$token,$tokenType);
             }
             return $tokenPayload;
@@ -313,7 +301,7 @@ class JWT
         if(isset($this->config['redis']) && $this->config['redis']){
 
             //获取主键
-            $idKey = config("plugin.Jody.auth.app.guard.{$this->guard}.key");
+            $idKey = config("plugin.jody.auth.app.guard.{$this->guard}.key");
             $id = $tokenPayload->extend->$idKey;
             if($all){
                 Redis::del(["token_{$this->guard}_".$id]);
@@ -362,7 +350,7 @@ class JWT
         ];
         if($list != null){
             $tokenList = unserialize($list);
-            $maxNum = config("plugin.Jody.auth.app.guard.{$this->guard}.num");
+            $maxNum = config("plugin.jody.auth.app.guard.{$this->guard}.num");
             if(is_array($tokenList)){
                 if($maxNum === -1){ //不限制
                     $tokenList[] = $defaultList;
