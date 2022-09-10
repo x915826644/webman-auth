@@ -9,6 +9,8 @@ class Install
      * @var array
      */
     protected static $pathRelation = array (
+        'config/plugin/jody/auth' => 'config/plugin/jody/auth',
+        'command' => 'app/command'
 );
 
     /**
