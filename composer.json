@@ -1,0 +1,29 @@
+{
+  "name": "jody/webman-auth",
+  "description": "webman auth",
+  "keywords": ["webman", "auth"],
+  "type": "library",
+  "require": {
+    "php": ">=7.2",
+    "firebase/php-jwt": "^5.4",
+    "webman/console": "^1.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Jody\\WebmanAuth\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Jody",
+      "email": "915826644@qq.com"
+    }
+  ]
+}
