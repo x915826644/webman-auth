@@ -3,14 +3,6 @@
  *-------------------------------------------------------------------------p*
  * 用户信息自动维护
  *-------------------------------------------------------------------------h*
- * @copyright  Copyright (c) 2015-2022 Jody Inc. (http://www.Jody.com)
- *-------------------------------------------------------------------------c*
- * @license    http://www.Jody.com        s h o p w w i . c o m
- *-------------------------------------------------------------------------e*
- * @link       http://www.Jody.com by 象讯科技 phcent.com
- *-------------------------------------------------------------------------n*
- * @since      Jody象讯·PHP商城系统Pro
- *-------------------------------------------------------------------------t*
  */
 
 namespace Jody\WebmanAuth;
@@ -51,7 +43,7 @@ class Auth
      */
     public function __construct()
     {
-        $_config = config('plugin.Jody.auth.app');
+        $_config = config('plugin.jody.auth.app');
         if (empty($_config)) {
             throw new JwtTokenException('The configuration file is abnormal or does not exist');
         }
@@ -264,7 +256,7 @@ class Auth
      */
     public function bcrypt($password): ?string
     {
-        $key = config('plugin.Jody.auth.app.app_key');
+        $key = config('plugin.jody.auth.app.app_key');
         if (Str::startsWith($key, 'base64:')) {
             $key = base64_decode(substr($key, 7));
         }
